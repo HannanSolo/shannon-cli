@@ -1,0 +1,35 @@
+Proposed encrypted file layout:
+
+[
+  IV (initialization vector) for KDF
+  key derivation parameters
+  hash of derived secret
+]
+[
+  IV for cipher,
+  ciphertext = encrypt( M, KDF( password ) )
+]
+
+
+
+
+
+Go workspaces
+
+GOPATH env variable - typically ~/go
+GOROOT env variable - typically /usr/local/go
+
+
+$GOPATH/src/pkg/foo
+
+
+
+Go project layout possibilities:
+
+    foo/
+       main.go - package main   - 
+       ...
+       
+       enc/
+          enc.go - package enc   import "foo/enc"
+          blah_test.go - package enc, package enc_test
