@@ -1,0 +1,55 @@
+package fakecypher
+
+import "crypto"
+
+type fakeCipher struct {}
+
+
+
+func NewCipher(key []byte) (crypto.Block, error) { return fakeCipher{}, nil }
+
+
+
+func (fakeCipher) BlockSize() int { return 16 }
+
+func (fakeCipher s) Encrypt(dst, src []byte) {
+  copy(dst, src[:s.BlockSize()])
+}
+
+func (fakeCipher s) Decrypt(dst, src []byte) {
+  copy(dst, src[:s.BlockSize()])
+}
+
+
+
+
+
+package main_test
+
+
+import (
+  "crypto/aes"
+  "crypto/rand"
+)
+
+
+func TestAES (t *testing.T) {
+  key := rand.GenerateSomeRandoMBytesYouLookUpThisFunction()
+  c, err := aes.NewCipher(key)
+
+  if err != nil {
+    panic("couldn't initialize aes cipher")
+  }
+
+  message := "i like bananas"
+  dst := make([]byte, c.BlockSize())
+  c.Encrypt(dst, []byte(message))
+
+  fmt.Println("decrypted", []byte(message))
+  fmt.Println("encrypted:", dst)
+
+  // not actually a test, you need to do a byte based comparison, and you need to account for blocksize being different here
+  if (dst == message ) {
+    t.Fail("oh no ciphertext contained message")
+  }
+}
