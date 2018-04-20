@@ -1,10 +1,10 @@
 package fakecypher
 
-import "crypto"
+import "crypto/cipher"
 
 type fakeCipher struct{}
 
-func NewCipher(key []byte) (crypto.Block, error) { return fakeCipher{}, nil }
+func NewCipher(key []byte) (cipher.Block, error) { return fakeCipher{}, nil }
 
 func (fakeCipher) BlockSize() int { return 16 }
 
