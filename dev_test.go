@@ -1,7 +1,8 @@
 package main_test
 
 import (
-	"fakecypher"
+	"crypto/aes"
+	"crypto/rand"
 	"fmt"
 	"testing"
 )
@@ -11,12 +12,12 @@ import (
 // when writing tests for new code, you can use tests to assert your assumptions about how it *should* work
 func TestBlockInterface(t *testing.T) {
 	key := make([]byte, 16)
-	// _, err := rand.Read(key)
-	// if err != nil {
-	// 	fmt.Println("error:", err)
-	// 	return
-	// }
-	cipher, err := fakecypher.NewCipher(key) // TODO replace this with FakeCipher, see if that works
+	_, err := rand.Read(key)
+	if err != nil {
+		fmt.Println("error:", err)
+		return
+	}
+	cipher, err := aes.NewCipher(key) // TODO replace this with FakeCipher, see if that works
 
 	if err != nil {
 		t.Fatal(err)

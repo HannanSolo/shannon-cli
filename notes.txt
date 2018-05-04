@@ -33,3 +33,6 @@ Go project layout possibilities:
        enc/
           enc.go - package enc   import "foo/enc"
           blah_test.go - package enc, package enc_test
+
+
+hello        
