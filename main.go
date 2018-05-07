@@ -1,9 +1,8 @@
 package main
 
 import (
-	"flag"
+	"encrypt"
 	"fmt"
-	"os"
 )
 
 /*
@@ -54,23 +53,29 @@ Password: 01234decafbaddeadbeef831751959
 
 //var config config.Config // package config       type Config struct { Algorithm string }
 
-var decrypt bool
+// var decrypt bool
 
-func init() {
-	flag.BoolVar(&decrypt, "d", false, "Decryption mode")
-}
+// func init() {
+// 	flag.BoolVar(&decrypt, "d", false, "Decryption mode")
+// }
 
 func main() {
 	//Caesars CLI, Lets do this
-	flag.Parse()
-	args := flag.Args()
+	// flag.Parse()
+	// args := flag.Args()
 
-	if len(args) < 1 {
-		fmt.Printf("Too few arguments \n")
-		fmt.Printf("Usage of %s: \n", os.Args[0])
-		flag.PrintDefaults()
-		return
-	}
+	// if len(args) < 1 {
+	// 	fmt.Printf("Too few arguments \n")
+	// 	fmt.Printf("Usage of %s: \n", os.Args[0])
+	// 	flag.PrintDefaults()
+	// 	return
+	// }
+	cipherText := encrypt.EncryptAES([]byte("hello, world"), "password")
+
+	fmt.Println(string(cipherText))
+
+	plainText := encrypt.DecryptAES(cipherText, "password")
+	fmt.Println(string(plainText))
 
 	/// at this point we assume all options are valid
 
