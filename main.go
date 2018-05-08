@@ -15,6 +15,7 @@ Encrypt:
 $ foo -p secret.txt
 Password: 01234decafbaddeadbeef831751959
 
+https://godoc.org/golang.org/x/crypto/nacl/secretbox
 AES
 (Anubis)
 (BlowFish)
