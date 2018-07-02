@@ -32,3 +32,7 @@ func DecryptAES(data []byte, passphrase string) []byte {
 	decrypted, _ := gcm.Open(nil, nonce, cipherText, nil)
 	return decrypted
 }
+
+func FileEncrypt(f string) {
+
+}
